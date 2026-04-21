@@ -1,0 +1,33 @@
+.w3-textarea{
+    width: 100%;
+    padding: 12px 20px;
+    height: 500px;
+    border: none;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.w3-textarea:focus{
+    outline: none !important;
+    border: none;
+    box-shadow: none;
+}
+
+.tonica{
+    margin: 5px; 
+    border: 1 px solid gray; 
+    
+    color:black;
+    font-weight: bolder;
+    background-color: greenyellow;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.atona{
+    margin: 5px;
+    background-color: #FFFA0033;
+    border: 1 px solid gray; 
+    border-radius: 4px;
+}
