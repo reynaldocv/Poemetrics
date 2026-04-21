@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>Poetrics</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"> 
+</head>
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="padding:30px 16px">
+  <h1 class="w3-xlarge">POEMETRICS</h1>
+  <h1>Poem metrics</h1>
+</header>
+
+<!-- Photo Grid -->
+<div class="w3-row-padding w3-grayscale" style="margin-bottom:128px">
+  <div class="w3-half">
+    <textarea id="input" name="w3review" class="w3-textarea">
+      Érase un hombre a una nariz pegado,
+      érase una nariz superlativa,
+      érase una alquitara medio viva,
+      érase un peje espada mal barbado;
+
+      era un reloj de sol mal encarado.
+      érase un elefante boca arriba,
+      érase una nariz sayón y escriba,
+      un Ovidio Nasón mal narigado.
+
+      Érase el espolón de una galera,
+      érase una pirámide de Egito,
+      los doce tribus de narices era;
+
+      érase un naricísimo infinito,
+      frisón archinariz, caratulera,
+      sabañón garrafal, morado y frito.
+</textarea>
+  </div>
+
+  <div class="w3-half">
+    <div id="output" style="white-space: pre-line">
+      <span style='color:red'>Output will be displayed here...</span>
+      
+    </div>
+  </div>
+</div>
+  
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-16 w3-light-grey w3-center w3-large"> 
+  
+  <p>Powered by <a href="https://reynaldocv.github.io/" target="_blank" class="w3-hover-text-green">@reynaldocv</a></p>
+</footer>
+
+</body>
+</html>
+
+<script type="text/javascript">
+  // 1. Select the elements
+  const inputField = document.getElementById('input');
+  const displayDiv = document.getElementById('output');
+  const url = 'http://127.0.0.1:8000/analysis/';
+  const test = 'http://127.0.0.1:8000/test/';
+  // 2. Add the 'keydown' event listener
+  inputField.addEventListener('keydown', function(event) {
+    
+    // 3. Check if the pressed key is "Enter"
+    if (event.key === 'Enter') {
+      let newUrl =  test + '?input=' + encodeURIComponent(inputField.value);
+      fetch(newUrl)
+
+      .then(response => response.json()) // Parses JSON into a JS object
+      .then(data => {
+        console.log(data); // Work with your data here
+        displayDiv.innerHTML = data.output; 
+
+      })
+      .catch(error => console.error('Error fetching data:', error));
+    }
+    else{
+      //alert("Please press the Enter key to submit your input.");
+    }
+  });
+
+  inputField.addEventListener('keydown', function(event) {
+    
+    // 3. Check if the pressed key is "Enter"
+    if (event.key === '@') {
+      fetch(url)
+      .then(response => response.json()) // Parses JSON into a JS object
+      .then(data => {
+        console.log(data); // Work with your data here
+        displayDiv.textContent = unescape(decodeURIComponent(data.output)); 
+      })
+      .catch(error => console.error('Error fetching data:', error));
+    }
+    else{
+      //alert("Please press the Enter key to submit your input.");
+    }
+  });
+</script>
+
+<script type="text/javascript">
+
+  const textarea = document.querySelector('textarea');
+  textarea.addEventListener('input', function() {
+    this.style.height = 'auto'; // Reset height to recalculate
+    this.style.height = this.scrollHeight + 'px'; // Set to match content
+  });
+
+  document.addEventListener('keydown', logKey);
+
+  function logKey(e) {
+    let command = document.querySelector('input[name="command"]:checked').value;
+    let keypressed = document.querySelector('input[name="keypressed"]:checked').value;
+    if (e.keyCode == keypressed && e[command]) alert(` ${command} + ${String.fromCharCode(e.keyCode)} pressed`);
+    e.preventDefault();
+    return false;
+  }
+
+</script>
