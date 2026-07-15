@@ -13,37 +13,35 @@
 <body>
 
 <!-- !PAGE CONTENT! -->
+
+
 <div class="w3-content" style="max-width:1500px">
 
 <!-- Header -->
-<header class="w3-panel w3-center w3-opacity" style="padding:30px 16px">
+
+<header class="w3-panel w3-center w3-opacity w3-grey" style="padding:30px 16px">
   <h1 class="w3-xlarge">POEMETRICS</h1>
   <h1>Poem metrics</h1>
 </header>
+<!-- Photo Grid -->
+
+   
+
+<!-- End Page Content -->
+
+
+<!-- Header -->
+
 
 <!-- Photo Grid -->
-<div class="w3-row-padding w3-grayscale" style="margin-bottom:128px">
-  <div class="w3-half">
-    — « » ¿ ? ¡ !
+<div class="w3-row-padding w3-grayscale" style="margin-bottom:128px">  
+  <div class="w3-half">    
     <textarea id="input" name="w3review" class="w3-textarea">
       Érase un hombre a una nariz pegado,
       érase una nariz superlativa,
       érase una alquitara medio viva,
       érase un peje espada mal barbado;
-
-      era un reloj de sol mal encarado.
-      érase un elefante boca arriba,
-      érase una nariz sayón y escriba,
-      un Ovidio Nasón mal narigado.
-
-      Érase el espolón de una galera,
-      érase una pirámide de Egito,
-      los doce tribus de narices era;
-
-      érase un naricísimo infinito,
-      frisón archinariz, caratulera,
-      sabañón garrafal, morado y frito.
-</textarea>
+    </textarea>
   </div>
 
   <div class="w3-half">
@@ -68,10 +66,10 @@
 
 <script type="text/javascript">
   // 1. Select the elements
-  const inputField = document.getElementById('input');
+  const inputField = document.getElementById('input'); 
   const displayDiv = document.getElementById('output');
-  const url = 'http://127.0.0.1:8000/analysis/';
-  const test = 'http://127.0.0.1:8000/test/';
+  const url = 'http://reynaldocv.pythonanywhere.com/analysis/';
+  const test = 'http://reynaldocv.pythonanywhere.com/test/';
   // 2. Add the 'keydown' event listener
   inputField.addEventListener('keydown', function(event) {
     

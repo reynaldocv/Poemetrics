@@ -20,7 +20,7 @@ def palabra(word):
         #sieneris
         #po-e-ta --> poe-ta
         if stack and (stack[-1][0][-1] in "aeo"):
-            if (silaba in "aeo") or (silaba[0] in "hH" and silaba[: 2] not in ["Hí", "hí", "Hu", "Hú"]):
+            if (silaba in "aeo") or (silaba[0] in "h" and silaba[: 2] not in ["hí", "hu", "hú"]):
                 ton = (ton == True) or (stack[-1][1] == True)
                 
                 last = stack.pop()
@@ -40,7 +40,7 @@ def palabra(word):
 @lru_cache
 def oracion(sentence):
     words = sentence.split(" ")
-    stack = [palabra(word) for word in words if word != ""]
+    stack = [palabra(word.lower()) for word in words if word != ""]
     
     if not stack: 
         return "<tr><td><br></td></tr>"
@@ -52,7 +52,7 @@ def oracion(sentence):
             last = ["", False, False]
             _ton = ton
             
-            if newStack and (newStack[-1][2] == True and newStack[-1][0][-1] in "yaeiou" and silaba not in ["ya", "YA", "Ya","hí","Hí"] and silaba[0] in "yaeiouAEIOUYHh"):
+            if newStack and (newStack[-1][2] == True and newStack[-1][0][-1] in "yaeiou" and silaba not in ["ya", "hí"] and silaba[0] in "yaeiouh"):
                 last = newStack.pop()
                 _ton = False
                 _last = True
