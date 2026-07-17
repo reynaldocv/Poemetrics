@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/kai/Documents/PoetricsEnv/Poemetrics/Poemetrics/static'
+STATIC_ROOT = '/home/reynaldocv/poemetrics/Poemetrics/static'
 #STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES=[STATIC_ROOT]
 
