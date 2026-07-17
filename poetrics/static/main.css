@@ -31,3 +31,21 @@
     border: 1 px solid gray; 
     border-radius: 4px;
 }
+
+.w3-number > td{
+    text-align: center;
+    font-size:x-small;
+    color:blue;
+    background-color: #f8f8f8;
+    border-bottom: 3px solid blue;
+}
+
+.w3-ulasttd{
+    width: 30px;    
+}
+.w3-lasttd{
+    font-size:x-small;
+    color:red;
+    border-left: 3px solid red;
+
+}

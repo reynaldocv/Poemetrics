@@ -31,8 +31,25 @@ def test(request):
     verses = output.split('\n')
     newVerses = []
     
+    maxSyllabels = 0 
+    data = []
+    
     for verse in verses:        
-        newVerses.append(metrica.oracion(verse))
+        data.append(metrica.oracion(verse))
+        
+        maxSyllabels = max(maxSyllabels, data[-1][1])
+    
+    newVerses = ["<tr class='w3-number'>" + "".join(["<td>" + str(i + 1) + "</td>" for i in range(maxSyllabels)]) + "<td></td></tr>"]
+    
+    for (verse, len1, len2) in data:  
+        tmp = verse  
+        tmp += "".join(["<td> </td>" for _ in range(maxSyllabels - len1)]) 
+        if len2 > 0:
+            tmp += "<td class='w3-ulasttd'></td><td class='w3-lasttd'>" + str(len2) +"</td>"
+        
+        tmp = "<tr>" + tmp + "</tr>"
+        
+        newVerses.append(tmp)
     
     ans = "".join(newVerses)
     

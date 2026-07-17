@@ -40,13 +40,16 @@ def palabra(word):
 @lru_cache
 def oracion(sentence):
     words = sentence.split(" ")
+    words = [word for word in words if word != ""]
+    
     stack = [palabra(word.lower()) for word in words if word != ""]
     
     if not stack: 
-        return "<tr><td><br></td></tr>"
+        return ["<td><br></td>", 0, 0]
     
-    newStack = []
+    lastWord = words[-1]
     
+    newStack = []    
     for elem in stack: 
         for (silaba, ton, _last) in elem:
             last = ["", False, False]
@@ -58,19 +61,22 @@ def oracion(sentence):
                 _last = True
                 
             newStack.append([last[0] + " " + silaba, _ton, _last])
-                
+            
     for (ith, (elem, ton, _)) in enumerate(newStack, 1):
         if ton == True:
             newStack[ith - 1] = "<td class='tonica'>" + elem + "</td>"
         else:
             newStack[ith - 1] = "<td class='atona'>" + elem + "</td>"
+            
+    _silabas = silabear(lastWord)
+    _tonica  = tonica(lastWord)
     
     tmp = "".join(newStack)
     
-    ans = "<tr>" + tmp + "</tr>" 
+    ans =  tmp  
     
     
-    return ans 
+    return [ans, len(newStack), len(newStack) + 2 + _tonica] 
     
 
 def test():
